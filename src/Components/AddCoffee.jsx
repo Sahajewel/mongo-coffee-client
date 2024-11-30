@@ -1,8 +1,14 @@
 
+import getRandomFruitsName from 'random-fruits-name';
+import { useState } from 'react';
 import Swal from 'sweetalert2'
 
 export default function AddCoffee() {
- 
+  const [fruits, setFruits] = useState("")
+ const handleFruits = ()=>{
+  const newFruits = getRandomFruitsName()
+ setFruits(newFruits)
+ }
   const handleCoffeeSubmit = (e)=>{
     e.preventDefault();
     const form = e.target;
@@ -39,6 +45,8 @@ export default function AddCoffee() {
   return (
     <div className='my-10 mx-auto w-10/12'>
       <h1 className='text-5xl font-extrabold text-center mb-10'>Add a Coffee</h1>
+      <p>{getRandomFruitsName("en")}</p>
+      <button onClick={handleFruits}>saha</button>
       <form onSubmit={handleCoffeeSubmit}>
        {/* name and available */}
        <div className='md:flex gap-5 bg-[#F4F2F0]'>
