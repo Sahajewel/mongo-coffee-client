@@ -2,6 +2,7 @@
 import getRandomFruitsName from 'random-fruits-name';
 import { useState } from 'react';
 import Swal from 'sweetalert2'
+import Navbar from './Navbar';
 
 export default function AddCoffee() {
   const [fruits, setFruits] = useState("")
@@ -43,10 +44,12 @@ export default function AddCoffee() {
     })
   }
   return (
-    <div className='my-10 mx-auto w-10/12'>
+  <div>
+    <Navbar></Navbar>
+      <div className='my-10 mx-auto w-10/12'>
       <h1 className='text-5xl font-extrabold text-center mb-10'>Add a Coffee</h1>
-      <p>{getRandomFruitsName("en")}</p>
-      <button onClick={handleFruits}>saha</button>
+      <p className='mb-3 text-center text-xl font-bold text-red-400'>{getRandomFruitsName("en")}</p>
+      <button className='btn mb-5 flex mx-auto text-xl font-bold' onClick={handleFruits}>Fruits</button>
       <form onSubmit={handleCoffeeSubmit}>
        {/* name and available */}
        <div className='md:flex gap-5 bg-[#F4F2F0]'>
@@ -101,5 +104,6 @@ export default function AddCoffee() {
         
       </form>
     </div>
+  </div>
   )
 }

@@ -1,9 +1,11 @@
 import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Navbar from './Navbar';
 
 export default function UpdateCoffee() {
-  const coffee =  useLoaderData()
+const coffee =  useLoaderData()
+  console.log(coffee)
   const {_id,name, quantity, supplier, taste, category, details, photo} = coffee
  
   console.log(coffee)
@@ -30,7 +32,7 @@ export default function UpdateCoffee() {
     })
     .then((res)=>res.json())
     .then((data)=>{
-     if(data.insertedId){
+     if(data?.insertedId){
       Swal.fire({
         title: 'Success!',
         text: 'Successfylly',
@@ -41,7 +43,9 @@ export default function UpdateCoffee() {
     })
   }
   return (
-    <div className='my-10 mx-auto w-10/12'>
+    <div>
+      <Navbar></Navbar>
+      <div className='my-10 mx-auto w-10/12'>
       <h1 className='text-5xl font-extrabold text-center mb-10'>Update a Coffee</h1>
       <form onSubmit={handleUpdateSubmit}>
        {/* name and available */}
@@ -98,5 +102,6 @@ export default function UpdateCoffee() {
       </form>
     </div>
   
+    </div>
   )
 }
